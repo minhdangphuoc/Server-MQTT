@@ -8,7 +8,6 @@ private:
     int tfl1_status;
 public:
     traffic_light(/* args */);
-    ~traffic_light();
 
     void setSignal(int i) 
     {
@@ -20,10 +19,6 @@ public:
 traffic_light::traffic_light(/* args */)
 {
     tfl1_status = 0;
-}
-
-traffic_light::~traffic_light()
-{
 }
 
 void traffic_light::print()
