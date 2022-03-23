@@ -37,6 +37,8 @@ mqtt::mqtt(const char *host, int port)						// costructor
 	printf("****   MQTT start connect ****** \n");
 
 	connect(host, port, (int) keepalive);			// connect to mqtt broker
+	
+	if(send_message(mqtt_message)) printf("Message did not send") ;
 
 	loop_start();						// stay on mqtt loop
 };
@@ -103,7 +105,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	
 	tf1.setSignal(mqtt_message[5]- '0');
 	tf1.print();
-	send_message(mqtt_message);
+	
 }  ////////////////////////////         end message received ////////////////////////
 
 
