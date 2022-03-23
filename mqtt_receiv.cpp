@@ -1,5 +1,6 @@
 
 ///////////////////////////  3.3.2022  KN /////////////////////////////
+#pragma once
 
 #include <cstdio>
 #include <cstring>
