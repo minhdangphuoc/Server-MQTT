@@ -1,7 +1,5 @@
 
 ///////////////////////////  3.3.2022  KN /////////////////////////////
-#pragma once
-
 #include <cstdio>
 #include <cstring>
 #include <string>
@@ -15,13 +13,14 @@
 
 
 #include "mqtt.h"
-
+#include "traffic_light.h"
 #include "mqtt_receiv.h"
 
 using namespace std;
 
 #include <jsoncpp/json/json.h>
 
+traffic_light tf1;
 
 //////////////////////////////////////////////////////////////////////////
 //////////
@@ -38,8 +37,6 @@ mqtt::mqtt(const char *host, int port)						// costructor
 	printf("****   MQTT start connect ****** \n");
 
 	connect(host, port, (int) keepalive);			// connect to mqtt broker
-
-	tf1.print();
 
 	loop_start();						// stay on mqtt loop
 };
@@ -82,7 +79,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 
 	printf("Message is = %s\n",mqtt_message.c_str()) ;
 	tf1.setSignal((int)mqtt_message.c_str()[5]);
-
+	tf1.print();
 }  ////////////////////////////         end message received ////////////////////////
 
 
