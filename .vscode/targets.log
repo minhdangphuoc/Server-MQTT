@@ -5,8 +5,9 @@ make.exe all -f d:\Server-MQTT\Makefile --print-data-base --no-builtin-variables
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Wed Mar 23 13:06:29 2022
+# Make data base, printed on Wed Mar 23 13:14:12 2022
 
 # Variables
 
@@ -26,8 +27,7 @@ LOCALAPPDATA = C:\Users\minhd\AppData\Local
 VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-3703f012-288d-4e7e-b3cb-6a999fb8acd6-sock
 # environment
 VSCODE_CWD = D:\Server-MQTT
-# enviro 
-nment
+# environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
 SYSTEMROOT = C:\Windows
@@ -224,8 +224,7 @@ ALLUSERSPROFILE = C:\ProgramData
 # environment
 SESSIONNAME = Console
 # default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-s 
-ync load
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
 PROCESSOR_REVISION = 6001
 # environment
@@ -251,7 +250,8 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # Not a target:
 d:\Server-MQTT\Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-03-23 13:06:25
+#  Last modified 2 
+022-03-23 13:13:43
 #  File has been updated.
 #  Successfully updated.
 
@@ -287,7 +287,14 @@ all:
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/11=9%
 #  recipe to execute (from 'd:\Server-MQTT\Makefile', line 2):
-	g++ main.cpp mqtt_receiv.cpp traffic_light.cpp -std=c++0x -pthread -lmosquitto -lmosquittopp -ljsoncpp -o go1
+	g++ main.cpp mqtt_receiv.cpp -std=c++0x -pthread -lmosquitto -lmosquittopp -ljsoncpp -o go1
+
+run:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'd:\Server-MQTT\Makefile', line 5):
+	./go1
 
 # Not a target:
 .SUFFIXES:
@@ -296,19 +303,19 @@ all:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=4/1024=0%, Rehash=0, Collisions=0/16=0%
+# Load=5/1024=0%, Rehash=0, Collisions=0/17=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 5 / storage = 49 B / avg = 9 B
-# current buf: size = 8174 B / used = 49 B / count = 5 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 6 / storage = 53 B / avg = 8 B
+# current buf: size = 8174 B / used = 53 B / count = 6 / avg = 8 B
 
-# strcache performance: lookups = 10 / hit rate = 50%
+# strcache performance: lookups = 12 / hit rate = 50%
 # hash-table stats:
-# Load=5/8192=0%, Rehash=0, Collisions=0/10=0%
-# Finished Make data base on Wed Mar 23 13:06:29 2022
+# Load=6/8192=0%, Rehash=0, Collisions=0/12=0%
+# Finished Make data base on Wed Mar 23 13:14:12 2022
 
  

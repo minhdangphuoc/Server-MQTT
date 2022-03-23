@@ -11,7 +11,6 @@
 #include <fstream>
 #include <time.h>
 
-#include "traffic_light.h"
 
 
 #include "mqtt.h"
@@ -31,7 +30,7 @@ using namespace std;
 
 mqtt::mqtt(const char *host, int port)						// costructor
 {
-	traffic_light tf1;
+	
 
 	int keepalive = 600;
 
