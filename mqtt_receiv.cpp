@@ -78,7 +78,8 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	mqtt_message = (char*) message->payload;
 
 	printf("Message is = %s\n",mqtt_message.c_str()) ;
-	tf1.setSignal((int)mqtt_message[5]);
+	printf("Signal value is = %i\n",(int)mqtt_message[5]) ;
+	tf1.setSignal(atoi(mqtt_message[5]));
 	tf1.print();
 }  ////////////////////////////         end message received ////////////////////////
 
