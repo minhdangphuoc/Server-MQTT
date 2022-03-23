@@ -102,7 +102,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	printf("Message is = %s\n",mqtt_message.c_str()) ;
 	printf("Signal value is = %i\n",mqtt_message[5]- '0') ;
 
-	if(send_message(mqtt_message)) printf("Message did not send") ;
+	if(!send_message(mqtt_message)) printf("Message did not send\n") ;
 	
 	tf1.setSignal(mqtt_message[5]- '0');
 	tf1.print();
