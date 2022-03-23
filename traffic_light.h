@@ -3,7 +3,6 @@
 #define TRAFFIC_LIGHT_H
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
 
 class traffic_light
@@ -28,7 +27,6 @@ traffic_light::traffic_light(/* args */)
 void traffic_light::print()
 {
     int size = 3;
-    system("clear");
     for (auto i = 0; i<size; i++)
     {
         if(tfl1_status==i+1)
