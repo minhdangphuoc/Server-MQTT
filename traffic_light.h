@@ -1,3 +1,6 @@
+#ifndef TRAFFIC_LIGHT_H
+#define TRAFFIC_LIGHT_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -50,3 +53,5 @@ void traffic_light::print()
         printf("\n");
     }
 }
+
+#endif // TRAFFIC_LIGHT_H
