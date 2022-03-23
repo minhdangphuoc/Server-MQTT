@@ -1,6 +1,8 @@
 //  KN 25.2.2021
 
-
+#pragma once
+#ifndef MQTT_H
+#define MQTT_H
 
 #include <mosquittopp.h>
 #include <math.h>
@@ -22,3 +24,4 @@ class mqtt : public mosqpp::mosquittopp			// mqtt class
 
 };
 
+#endif // MQTT_H
