@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 	printf ("****   Subscribed to listen MQTT messages \n");
 
 	mqtt mqtt_obj(host_addr, port_number);			// start mqtt 
-
+	
 	while(1);						// keep mqtt send theread running
 						
 	return 0;

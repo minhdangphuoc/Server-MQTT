@@ -11,6 +11,8 @@
 #include <fstream>
 #include <time.h>
 
+#include "traffic_light.h"
+
 
 #include "mqtt.h"
 
@@ -29,12 +31,15 @@ using namespace std;
 
 mqtt::mqtt(const char *host, int port)						// costructor
 {
+	traffic_light tf1;
 
 	int keepalive = 600;
 
 	printf("****   MQTT start connect ****** \n");
 
 	connect(host, port, (int) keepalive);			// connect to mqtt broker
+
+	tf1.print();
 
 	loop_start();						// stay on mqtt loop
 };
@@ -76,6 +81,8 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	mqtt_message = (char*) message->payload;
 
 	printf("Message is = %s\n",mqtt_message.c_str()) ;
+	tf1.setSignal((int)mqtt_message.c_str()[5]);
+
 }  ////////////////////////////         end message received ////////////////////////
 
 
