@@ -106,6 +106,8 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	
 	tf1.setSignal(mqtt_message[5]- '0');
 	tf1.print();
+
+	// Create new method to define which connection is
 	
 }  ////////////////////////////         end message received ////////////////////////
 

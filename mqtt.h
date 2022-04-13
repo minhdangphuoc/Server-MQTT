@@ -7,9 +7,9 @@
 //
 //
 
-#define in_topic 	"EMB2"
+#define in_topic 	"SlothInput"
 
-#define out_topic 	"EMB2out"
+#define out_topic 	"SlothTFLState"
 
 #define host_addr 	"localhost"
 
