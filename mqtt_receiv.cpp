@@ -107,12 +107,12 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	{
 		if (!root["analog"].isNull())
 		{
-			int analogValue = (int) root["analog"].asString(); 
+			int analogValue = stoi(root["analog"].asString());
 			std::cout << analogValue << std::endl; 
 		}
 		if (!root["TFL"].isNull())
 		{
-			int state = (int) root["TFL"].asString(); 
+			int state = stoi(root["TFL"].asString()); 
 			std::cout << state << std::endl; 
 			tf1.setSignal(state);
 			tf1.print();
