@@ -93,20 +93,33 @@ void mqtt::on_subscribe(int mid, int qos_count, const int *granted_qos)		// on s
 void mqtt::on_message(const struct mosquitto_message *message)			// on message callback
 
 {
+	Json::Reader reader; 
+	Json::Value root; 
+
 	std::string mqtt_message;						// mqtt message string
 
         printf("\n ===================  Message received  ================================ \n"); 
 
 	mqtt_message = (char*) message->payload;
-
 	printf("Message is = %s\n",mqtt_message.c_str()) ;
-	printf("Signal value is = %i\n",mqtt_message[5]- '0') ;
 
-	if(!send_message(mqtt_message)) printf("Message did not send\n") ;
-	
-	tf1.setSignal(mqtt_message[5]- '0');
-	tf1.print();
+	if (reader.parse(mqtt_message, root))   
+	{
+		if (!root["analog"].isNull())
+		{
+			int analogValue = (int) root["analog"].asString(); 
+			std::cout << analogValue << std::endl; 
+		}
+		if (!root["TFL"].isNull())
+		{
+			int state = (int) root["TFL"].asString(); 
+			std::cout << state << std::endl; 
+			tf1.setSignal(state);
+			tf1.print();
+		}
+	}
 
+	// if(!send_message(mqtt_message)) printf("Message did not send\n") ;
 	// Create new method to define which connection is
 	
 }  ////////////////////////////         end message received ////////////////////////
