@@ -134,6 +134,8 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 			wprintw(info_win_1, to_string(root["TFL"].asInt()).c_str());
 		}
 		// tf1.print();
+	} else {
+		add_log("\n Cannot parse JSON \n"); 
 	}
 	
 	initWindow();
