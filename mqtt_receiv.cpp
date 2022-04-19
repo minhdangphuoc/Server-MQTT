@@ -141,10 +141,10 @@ wborder(info_win_2, '#', '#', '#', '#', '#', '#', '#', '#');
 wborder(cmd_win, '#', '#', '#', '#', '#', '#', '#', '#');
 
 // Init refresh
-refresh();
-wrefresh(info_win_1);
-wrefresh(info_win_2);
-wrefresh(cmd_win);
+// refresh();
+// wrefresh(info_win_1);
+// wrefresh(info_win_2);
+// wrefresh(cmd_win);
 }
 
 
