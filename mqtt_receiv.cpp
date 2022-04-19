@@ -197,10 +197,10 @@ void mqtt::initWindow()
 	mvprintw(10,0,log.c_str());
 
 	// Refresh
-	refresh();
 	wrefresh(info_win_1);
 	wrefresh(info_win_2);
 	wrefresh(cmd_win);
+	refresh();
 }
 
 
