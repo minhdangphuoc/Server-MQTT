@@ -38,7 +38,13 @@ int main(int argc, char *argv[])
 	mqtt mqtt_obj(host_addr, port_number);			// start mqtt 
 	mqtt_obj.initWindow();
 	
-	while(1);						// keep mqtt send theread running
-						
+	while(1)						// keep mqtt send theread running
+	{
+		// Refresh
+		refresh();
+		wrefresh(info_win_1);
+		wrefresh(info_win_2);
+		wrefresh(cmd_win);
+	}							
 	return 0;
 }

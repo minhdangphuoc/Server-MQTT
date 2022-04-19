@@ -78,9 +78,6 @@ bool mqtt::send_message(std::string  message)
 
 void mqtt::on_connect(int rc)							// on connect callback
 {
-	
-	mvprintw(10,0,log.c_str());
-	refresh();
 	add_log("****   MQTT Connected with code= " + to_string(rc) +"  *****");
 	if(rc == 0)
 	{
@@ -163,12 +160,6 @@ void mqtt::initWindow()
 	mvwprintw(info_win_1, 0, 1, "Info 1");
 	mvwprintw(info_win_2, 0, 1, "Info 2");
 	mvwprintw(cmd_win, 0, 1, "Command");
-
-	// Refresh
-	refresh();
-	wrefresh(info_win_1);
-	wrefresh(info_win_2);
-	wrefresh(cmd_win);
 }
 
 
