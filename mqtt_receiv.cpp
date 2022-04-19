@@ -80,6 +80,7 @@ void mqtt::on_connect(int rc)							// on connect callback
 {
 	
 	mvprintw(10,0,log.c_str());
+	refresh();
 	add_log("****   MQTT Connected with code= " + to_string(rc) +"  *****");
 	if(rc == 0)
 	{
@@ -114,7 +115,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	initWindow();
 	
 	// print log - test
-	mvprintw(10,0,log.c_str());
+	
 	
 	 
     add_log("\n ===================  Message received  ================================ \n"); 
@@ -164,7 +165,7 @@ void mqtt::initWindow()
 	mvwprintw(cmd_win, 0, 1, "Command");
 
 	// Refresh
-	refresh();
+	// refresh();
 	wrefresh(info_win_1);
 	wrefresh(info_win_2);
 	wrefresh(cmd_win);
