@@ -69,7 +69,26 @@ bool mqtt::send_message(std::string message)
  
 	int ret = publish(NULL,out_topic,message.length(),message.c_str(),1,false);
 
-	add_log(" Message published \n");
+	add_log("Message published ");
+	add_log(message);
+	add_log("\n");
+	
+	if (reader.parse(message, root) == true)   
+	{
+		add_log("Command: ");
+		if (!root["Move"].isNull())
+		{
+			add_log("Move - Value: " + root["Move"].asString());
+		}
+
+		if (!root["Turn"].isNull())
+		{
+			add_log("Turn - Value: " + root["Turn"].asString(););
+		}
+		// tf1.print();
+	} else {
+		add_log("\n Cannot parse JSON or unvalid command \n"); 
+	}
 
  	return ( ret == MOSQ_ERR_SUCCESS );
  }
@@ -106,8 +125,6 @@ void mqtt::on_subscribe(int mid, int qos_count, const int *granted_qos)		// on s
 void mqtt::on_message(const struct mosquitto_message *message)			// on message callback
 
 {
-	Json::Reader reader; 
-	Json::Value root; 
 
 	std::string mqtt_message;						// mqtt message string
 

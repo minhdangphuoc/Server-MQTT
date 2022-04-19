@@ -13,13 +13,15 @@ class mqtt : public mosqpp::mosquittopp			// mqtt class
 {
 	private:
 	std::string log;
-	
+	Json::Reader reader; 
+	Json::Value root; 
+
 	public:
 		// New windows
 		WINDOW *info_win_1; 
 		WINDOW *info_win_2; 
 		WINDOW *cmd_win;
-
+		
 		mqtt(const char *host, int port);	 // constructor
 		~mqtt(){
 			endwin();
