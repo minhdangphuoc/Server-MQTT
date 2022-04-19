@@ -21,6 +21,9 @@ using namespace std;
 
 #include <jsoncpp/json/json.h>
 
+void mqtt::add_log(std::string);
+void mqtt::initWindow()
+
 traffic_light tf1;
 
 // New windows
@@ -37,8 +40,9 @@ WINDOW *cmd_win = newwin(3, 20, 5,15);
 
 mqtt::mqtt(const char *host, int port)						// costructor
 {
-	
-	
+	// Ncurse Init
+	initscr();
+
 	int keepalive = 600;
 
 	add_log("****   MQTT start connect ****** \n");
@@ -75,8 +79,7 @@ bool mqtt::send_message(std::string  message)
 
 void mqtt::on_connect(int rc)							// on connect callback
 {
-	// Ncurse Init
-	initscr();
+	
 
 	add_log("****   MQTT Connected with code= " + to_string(rc) +"  *****\n");
 	if(rc == 0)
@@ -85,8 +88,7 @@ void mqtt::on_connect(int rc)							// on connect callback
 
 		subscribe(NULL, in_topic);
 
-		add_log("****   MQTT subscription to topic = ");add_log(in_topic);
-		add_log("    ****\n");
+		add_log("****   MQTT subscription to topic = " + in_topic + "****");
 	}
 }
 
@@ -103,25 +105,20 @@ void mqtt::on_subscribe(int mid, int qos_count, const int *granted_qos)		// on s
 void mqtt::on_message(const struct mosquitto_message *message)			// on message callback
 
 {
-	// print log - test
-	mvprintw(10,0,log.c_str());
-	initWindow();
-	// Refresh
-	refresh();
-	wrefresh(info_win_1);
-	wrefresh(info_win_2);
-	wrefresh(cmd_win);
-
 	Json::Reader reader; 
 	Json::Value root; 
 
 	std::string mqtt_message;						// mqtt message string
 
+	// print log - test
+	mvprintw(10,0,log.c_str());
+	initWindow();
+
     add_log("\n ===================  Message received  ================================ \n"); 
 
 	mqtt_message = (char*) message->payload;
 	add_log("Message is = "+ mqtt_message +"\n") ;
-
+	
 	if (reader.parse(mqtt_message, root))   
 	{
 		if (!root["analog"].isNull())
@@ -140,7 +137,11 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 		tf1.print();
 	}
 	
-	// Create new method to define which connection is
+	// Refresh
+	refresh();
+	wrefresh(info_win_1);
+	wrefresh(info_win_2);
+	wrefresh(cmd_win);
 	
 }  ////////////////////////////         end message received ////////////////////////
 
