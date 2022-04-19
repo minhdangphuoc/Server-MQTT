@@ -31,6 +31,12 @@ wborder(info_win_2, '#', '#', '#', '#', '#', '#', '#', '#');
 
 WINDOW *cmd_win = newwin(3, 20, 5,15);
 
+// Init refresh
+            refresh();
+            wrefresh(info_win_1);
+            wrefresh(info_win_2);
+            wrefresh(cmd_win);
+
 
 
 //////////////////////////////////////////////////////////////////////////
