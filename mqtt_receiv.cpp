@@ -77,8 +77,7 @@ void mqtt::on_connect(int rc)							// on connect callback
 {
 	// Ncurse Init
 	initscr();
-	initWindow();
-	
+
 	add_log("****   MQTT Connected with code= " + to_string(rc) +"  *****\n");
 	if(rc == 0)
 	{
@@ -136,10 +135,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	// print log - test
 	mvprintw(10,0,log.c_str());
 	// Refresh
-	refresh();
-	wrefresh(info_win_1);
-	wrefresh(info_win_2);
-	wrefresh(cmd_win);
+	initWindow();
 
 	// Create new method to define which connection is
 	
@@ -152,6 +148,7 @@ void mqtt::add_log(std::string str)
 
 void mqtt::initWindow()
 {
+	noecho();
 // New windows
 	wborder(info_win_1, '#', '#', '#', '#', '#', '#', '#', '#');
 	wborder(info_win_2, '#', '#', '#', '#', '#', '#', '#', '#');
