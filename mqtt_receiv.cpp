@@ -182,9 +182,7 @@ void mqtt::add_log(std::string str)
 void mqtt::initWindow()
 {
 	noecho();
-	// print log - test
-	mvprintw(10,0,log.c_str());
-
+	
 	// border
 	wborder(info_win_1, '#', '#', '#', '#', '#', '#', '#', '#');
 	wborder(info_win_2, '#', '#', '#', '#', '#', '#', '#', '#');
@@ -194,7 +192,10 @@ void mqtt::initWindow()
 	mvwprintw(info_win_1, 0, 1, "Distance");
 	mvwprintw(info_win_2, 0, 1, "Compass");
 	mvwprintw(cmd_win, 0, 1, "Command");
-	wmove(cmd_win, 50, 50);
+
+	// print log - test
+	mvprintw(10,0,log.c_str());
+
 	// Refresh
 	refresh();
 	wrefresh(info_win_1);
