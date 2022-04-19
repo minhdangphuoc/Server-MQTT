@@ -127,10 +127,16 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 			tf1.setSignal(state);
 		}
 		tf1.print();
+
 		
-		// print log - test
-		mvprintw(10,0,log.c_str());
 	}
+	// print log - test
+	mvprintw(10,0,log.c_str());
+	// Init refresh
+	refresh();
+	wrefresh(info_win_1);
+	wrefresh(info_win_2);
+	wrefresh(cmd_win);
 
 	// Create new method to define which connection is
 	
@@ -147,14 +153,6 @@ void mqtt::initWindow()
 	wborder(info_win_1, '#', '#', '#', '#', '#', '#', '#', '#');
 	wborder(info_win_2, '#', '#', '#', '#', '#', '#', '#', '#');
 	wborder(cmd_win, '#', '#', '#', '#', '#', '#', '#', '#');
-
-	// Init refresh
-	refresh();
-	wrefresh(info_win_1);
-	wrefresh(info_win_2);
-	wrefresh(cmd_win);
-
-	
 }
 
 
