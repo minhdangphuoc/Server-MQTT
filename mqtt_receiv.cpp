@@ -134,9 +134,12 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	}
 	// print log - test
 	mvprintw(10,0,log.c_str());
-	// Refresh
 	initWindow();
-
+	// Refresh
+	refresh();
+	wrefresh(info_win_1);
+	wrefresh(info_win_2);
+	wrefresh(cmd_win);
 	// Create new method to define which connection is
 	
 }  ////////////////////////////         end message received ////////////////////////
@@ -159,11 +162,6 @@ void mqtt::initWindow()
 	mvwprintw(info_win_2, 0, 1, "Info 2");
 	mvwprintw(cmd_win, 0, 1, "Command");
 
-// Refresh
-	refresh();
-	wrefresh(info_win_1);
-	wrefresh(info_win_2);
-	wrefresh(cmd_win);
 }
 
 
