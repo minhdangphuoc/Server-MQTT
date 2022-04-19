@@ -34,8 +34,14 @@ mqtt::mqtt(const char *host, int port)						// costructor
 {
 	// Ncurse Init
 	initscr();
+	// add window
+	info_win_1 = newwin(3, 20, 1, 1); 
+	info_win_2 = newwin(3, 20, 1, 25); 
+	cmd_win = newwin(3, 20, 5,15);
+	//init
 	initWindow();
-	
+
+
 	int keepalive = 600;
 
 	add_log("****   MQTT start connect ****** \n");
@@ -107,7 +113,6 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 
 	// print log - test
 	mvprintw(10,0,log.c_str());
-	initWindow();
 	
 	 
     add_log("\n ===================  Message received  ================================ \n"); 
@@ -133,9 +138,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 		// tf1.print();
 	}
 	
-	// Refresh
-	refresh();
-	
+		initWindow();
 	
 }  ////////////////////////////         end message received ////////////////////////
 
@@ -147,13 +150,8 @@ void mqtt::add_log(std::string str)
 void mqtt::initWindow()
 {
 	noecho();
-	
-	// add window
-	info_win_1 = newwin(3, 20, 1, 1); 
-	info_win_2 = newwin(3, 20, 1, 25); 
-	cmd_win = newwin(3, 20, 5,15);
-	
-	// New windows
+
+	// border
 	wborder(info_win_1, '#', '#', '#', '#', '#', '#', '#', '#');
 	wborder(info_win_2, '#', '#', '#', '#', '#', '#', '#', '#');
 	wborder(cmd_win, '#', '#', '#', '#', '#', '#', '#', '#');
@@ -163,6 +161,8 @@ void mqtt::initWindow()
 	mvwprintw(info_win_2, 0, 1, "Info 2");
 	mvwprintw(cmd_win, 0, 1, "Command");
 
+	// Refresh
+	refresh();
 	wrefresh(info_win_1);
 	wrefresh(info_win_2);
 	wrefresh(cmd_win);
