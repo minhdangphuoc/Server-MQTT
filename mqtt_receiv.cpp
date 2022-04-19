@@ -138,7 +138,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 		// tf1.print();
 	}
 	
-		initWindow();
+	// initWindow();
 	
 }  ////////////////////////////         end message received ////////////////////////
 
