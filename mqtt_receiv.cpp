@@ -117,7 +117,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	mqtt_message = (char*) message->payload;
 	add_log("Message is = "+ mqtt_message +"\n") ;
 	
-	if (reader.parse(mqtt_message, root))   
+	if (reader.parse(mqtt_message, root) == true)   
 	{
 		if (!root["analog"].isNull())
 		{
@@ -130,8 +130,8 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 		{
 			int state = root["TFL"].asInt(); 
 			tf1.setSignal(state);
-			mvprintw(9,0,to_string(state).c_str());
-			wprintw(info_win_1, to_string(root["TFL"].asInt()).c_str());
+			// mvprintw(9,0,to_string(state).c_str());
+			wprintw(info_win_1, to_string(state).c_str());
 		}
 		// tf1.print();
 	} else {
