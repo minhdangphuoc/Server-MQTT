@@ -16,9 +16,9 @@ class mqtt : public mosqpp::mosquittopp			// mqtt class
 	
 	public:
 		// New windows
-		WINDOW *info_win_1 = newwin(3, 20, 1, 1); 
-		WINDOW *info_win_2 = newwin(3, 20, 1, 25); 
-		WINDOW *cmd_win = newwin(3, 20, 5,15);
+		WINDOW *info_win_1; 
+		WINDOW *info_win_2; 
+		WINDOW *cmd_win;
 
 		mqtt(const char *host, int port);	 // constructor
 		~mqtt(){};
@@ -30,6 +30,9 @@ class mqtt : public mosqpp::mosquittopp			// mqtt class
 		bool send_message(std::string message);
 		void initWindow();
 		void add_log(std::string);
+	~mqtt(){
+		endwin();
+	}
 };
 
 #endif // MQTT_H
