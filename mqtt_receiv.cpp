@@ -131,7 +131,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 			int state = stoi(root["TFL"].asString()); 
 			std::cout << state << std::endl; 
 			tf1.setSignal(state);
-			wprintw(info_win_1,to_string(state).c_str());
+			wprintw(info_win_1, root["TFL"].asString());
 		}
 		// tf1.print();
 	}
