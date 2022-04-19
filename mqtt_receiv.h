@@ -13,8 +13,6 @@ class mqtt : public mosqpp::mosquittopp			// mqtt class
 {
 	private:
 	std::string log;
-	Json::Reader reader; 
-	Json::Value root; 
 
 	public:
 		// New windows
