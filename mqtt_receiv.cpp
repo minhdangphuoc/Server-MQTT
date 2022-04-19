@@ -103,6 +103,15 @@ void mqtt::on_subscribe(int mid, int qos_count, const int *granted_qos)		// on s
 void mqtt::on_message(const struct mosquitto_message *message)			// on message callback
 
 {
+	// print log - test
+	mvprintw(10,0,log.c_str());
+	initWindow();
+	// Refresh
+	refresh();
+	wrefresh(info_win_1);
+	wrefresh(info_win_2);
+	wrefresh(cmd_win);
+
 	Json::Reader reader; 
 	Json::Value root; 
 
@@ -129,17 +138,8 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 			tf1.setSignal(state);
 		}
 		tf1.print();
-
-		
 	}
-	// print log - test
-	mvprintw(10,0,log.c_str());
-	initWindow();
-	// Refresh
-	refresh();
-	wrefresh(info_win_1);
-	wrefresh(info_win_2);
-	wrefresh(cmd_win);
+	
 	// Create new method to define which connection is
 	
 }  ////////////////////////////         end message received ////////////////////////
