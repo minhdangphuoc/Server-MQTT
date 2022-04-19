@@ -78,7 +78,7 @@ bool mqtt::send_message(std::string  message)
 void mqtt::on_connect(int rc)							// on connect callback
 {
 	
-
+	mvprintw(10,0,log.c_str());
 	add_log("****   MQTT Connected with code= " + to_string(rc) +"  *****");
 	if(rc == 0)
 	{
