@@ -22,7 +22,7 @@ using namespace std;
 #include <jsoncpp/json/json.h>
 
 void mqtt::add_log(std::string);
-void mqtt::initWindow()
+void mqtt::initWindow();
 
 traffic_light tf1;
 
