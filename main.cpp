@@ -37,8 +37,8 @@ int main(int argc, char *argv[])
 
 	mqtt mqtt_obj(host_addr, port_number);			// start mqtt 
 	char c;
-	int i;
-	string str, ch;
+	int i=0;
+	string str="", ch;
 	while(1)						// keep mqtt send theread running
 	{
 		// Refresh

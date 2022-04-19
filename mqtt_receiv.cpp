@@ -97,6 +97,7 @@ void mqtt::on_subscribe(int mid, int qos_count, const int *granted_qos)		// on s
 {
 	add_log("****   MQTT Topic subscription succeeded.   ****\n");
 	mvprintw(10,0,log.c_str());
+	initWindow();
 }
 
 
