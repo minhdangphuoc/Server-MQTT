@@ -22,7 +22,6 @@ using namespace std;
 
 traffic_light tf1;
 
-initscr();
 // New windows
 WINDOW *info_win_1 = newwin(3, 20, 1, 1); 
 WINDOW *info_win_2 = newwin(3, 20, 1, 25); 
@@ -38,7 +37,7 @@ WINDOW *cmd_win = newwin(3, 20, 5,15);
 mqtt::mqtt(const char *host, int port)						// costructor
 {
 	
-
+	
 	int keepalive = 600;
 
 	printf("****   MQTT start connect ****** \n");
@@ -75,6 +74,7 @@ bool mqtt::send_message(std::string  message)
 
 void mqtt::on_connect(int rc)							// on connect callback
 {
+	initscr();
 	printf("****   MQTT Connected with code= %d  *****\n", rc);
 	if(rc == 0)
 	{
