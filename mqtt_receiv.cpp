@@ -9,7 +9,6 @@
 
 #include <fstream>
 #include <time.h>
-#include <ncurses.h>
 
 
 
@@ -96,11 +95,6 @@ void mqtt::on_subscribe(int mid, int qos_count, const int *granted_qos)		// on s
 
 
 //////////////////////////// Message received //////////////////////////////////
-
-// New windows
-WINDOW *info_win_1 = newwin(3, 20, 1, 1); 
-WINDOW *info_win_2 = newwin(3, 20, 1, 25); 
-WINDOW *cmd_win = newwin(3, 20, 5,15);
 
 void mqtt::on_message(const struct mosquitto_message *message)			// on message callback
 
