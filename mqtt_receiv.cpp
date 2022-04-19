@@ -86,7 +86,7 @@ void mqtt::on_connect(int rc)							// on connect callback
 
 		subscribe(NULL, in_topic);
 
-		add_log(text("****   MQTT subscription to topic = " + in_topic + "****"));
+		add_log(myString("****   MQTT subscription to topic = " + in_topic + "****"));
 	}
 }
 
