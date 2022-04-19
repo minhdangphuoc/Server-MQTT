@@ -86,7 +86,7 @@ void mqtt::on_connect(int rc)							// on connect callback
 
 		subscribe(NULL, in_topic);
 
-		add_log("****   MQTT subscription to topic = " + in_topic + "****");
+		add_log(str("****   MQTT subscription to topic = " + in_topic + "****"));
 	}
 }
 
@@ -132,7 +132,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 			std::cout << state << std::endl; 
 			tf1.setSignal(state);
 		}
-		tf1.print();
+		// tf1.print();
 	}
 	
 	// Refresh
