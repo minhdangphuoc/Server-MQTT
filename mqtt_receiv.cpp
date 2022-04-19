@@ -34,10 +34,12 @@ mqtt::mqtt(const char *host, int port)						// costructor
 {
 	// Ncurse Init
 	initscr();
+	
 	// add window
 	info_win_1 = newwin(3, 20, 1, 1); 
 	info_win_2 = newwin(3, 20, 1, 25); 
 	cmd_win = newwin(3, 20, 5,15);
+	
 	//init
 	initWindow();
 
@@ -48,7 +50,6 @@ mqtt::mqtt(const char *host, int port)						// costructor
 
 	connect(host, port, (int) keepalive);			// connect to mqtt broker
 	
-
 	loop_start();						// stay on mqtt loop
 };
 
@@ -96,7 +97,6 @@ void mqtt::on_connect(int rc)							// on connect callback
 void mqtt::on_subscribe(int mid, int qos_count, const int *granted_qos)		// on subcribe callback
 {
 	add_log("****   MQTT Topic subscription succeeded.   ****\n");
-	mvprintw(10,0,log.c_str());
 	initWindow();
 }
 
@@ -111,8 +111,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 
 	std::string mqtt_message;						// mqtt message string
 
-	// print log - test
-	mvprintw(10,0,log.c_str());
+	
     add_log("\n ===================  Message received  ================================ \n"); 
 
 	mqtt_message = (char*) message->payload;
@@ -148,6 +147,8 @@ void mqtt::add_log(std::string str)
 void mqtt::initWindow()
 {
 	noecho();
+	// print log - test
+	mvprintw(10,0,log.c_str());
 
 	// border
 	wborder(info_win_1, '#', '#', '#', '#', '#', '#', '#', '#');
