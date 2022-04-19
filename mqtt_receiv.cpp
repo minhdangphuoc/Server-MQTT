@@ -194,8 +194,7 @@ void mqtt::initWindow()
 	mvwprintw(info_win_1, 0, 1, "Distance");
 	mvwprintw(info_win_2, 0, 1, "Compass");
 	mvwprintw(cmd_win, 0, 1, "Command");
-	wmove(cmd_win, 1, 1);
-
+	wmove(cmd_win, 50, 50);
 	// Refresh
 	refresh();
 	wrefresh(info_win_1);
