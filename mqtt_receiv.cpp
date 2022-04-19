@@ -144,7 +144,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 
 		if (!root["Compass"].isNull())
 		{
-			int comp = root["Distance"].asInt(); 
+			int comp = root["Compass"].asInt(); 
 			// mvprintw(9,0,to_string(state).c_str());
 			mvwprintw(info_win_2, 1, 1, (to_string(comp) + " deg").c_str());
 		}
