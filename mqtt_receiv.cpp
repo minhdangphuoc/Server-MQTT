@@ -79,14 +79,14 @@ void mqtt::on_connect(int rc)							// on connect callback
 {
 	
 
-	add_log("****   MQTT Connected with code= " + to_string(rc) +"  *****\n");
+	add_log("****   MQTT Connected with code= " + to_string(rc) +"  *****");
 	if(rc == 0)
 	{
 					// Only attempt to subscribe on a successful connect. 
 
 		subscribe(NULL, in_topic);
 
-		add_log("****   MQTT subscription to topic = " + in_topic.c_str() + "****");
+		add_log("****   MQTT subscription to topic = " + in_topic + "****");
 	}
 }
 
