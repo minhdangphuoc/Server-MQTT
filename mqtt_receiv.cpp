@@ -96,6 +96,7 @@ void mqtt::on_connect(int rc)							// on connect callback
 void mqtt::on_subscribe(int mid, int qos_count, const int *granted_qos)		// on subcribe callback
 {
 	add_log("****   MQTT Topic subscription succeeded.   ****\n");
+	mvprintw(10,0,log.c_str());
 }
 
 
@@ -109,11 +110,8 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 
 	std::string mqtt_message;						// mqtt message string
 
-	mvprintw(10,0,log.c_str());
 	// print log - test
-	
-	
-	 
+	mvprintw(10,0,log.c_str());
     add_log("\n ===================  Message received  ================================ \n"); 
 
 	mqtt_message = (char*) message->payload;
