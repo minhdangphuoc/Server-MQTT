@@ -126,11 +126,11 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 			tf1.setSignal(1 + (analogValue>300) + (analogValue>600) + (analogValue>1024)); 
 			if(!send_message("{\"TFL\":" + to_string(1 + (analogValue>300) + (analogValue>600) + (analogValue>1024)) + "}")) add_log("Message did not send\n") ;
 		}
-		if (root["TFL"].isInt())
+		if (!root["TFL"].isNull())
 		{
 			int state = root["TFL"].asInt(); 
 			tf1.setSignal(state);
-			add_log(to_string(state));
+			mvprintw(9,0,to_string(state).c_str());
 			wprintw(info_win_1, to_string(root["TFL"].asInt()).c_str());
 		}
 		// tf1.print();
