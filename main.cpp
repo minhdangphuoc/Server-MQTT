@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 		case '\n':
 			i=0;
 			if (str.size()) 
-				if(!mqtt_obj.send_message(str)) add_log("Message did not send\n);
+				if(!mqtt_obj.send_message(str)) add_log("Message did not send\n");
 			str.clear();
 			wclear(mqtt_obj.cmd_win);
 			break;
