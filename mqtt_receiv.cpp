@@ -76,7 +76,7 @@ bool mqtt::send_message(std::string  message)
 void mqtt::on_connect(int rc)							// on connect callback
 {
 	initscr();
-	add_log("****   MQTT Connected with code= %d  *****\n", rc);
+	add_log("****   MQTT Connected with code= " + to_string(rc) +"  *****\n");
 	if(rc == 0)
 	{
 					// Only attempt to subscribe on a successful connect. 
@@ -109,7 +109,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
     add_log("\n ===================  Message received  ================================ \n"); 
 
 	mqtt_message = (char*) message->payload;
-	add_log("Message is = %s\n",mqtt_message.c_str()) ;
+	add_log("Message is = "+ mqtt_message.c_str() +"\n") ;
 
 	if (reader.parse(mqtt_message, root))   
 	{
