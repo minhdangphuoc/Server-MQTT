@@ -139,14 +139,14 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 		{
 			int dist = root["Distance"].asInt(); 
 			// mvprintw(9,0,to_string(state).c_str());
-			mvwprintw(info_win_1, 1, 1, to_string(dist).c_str());
+			mvwprintw(info_win_1, 1, 1, (to_string(dist) + " cm").c_str());
 		}
 
 		if (!root["Compass"].isNull())
 		{
 			int comp = root["Distance"].asInt(); 
 			// mvprintw(9,0,to_string(state).c_str());
-			mvwprintw(info_win_2, 1, 1, to_string(comp).c_str());
+			mvwprintw(info_win_2, 1, 1, (to_string(comp) + " deg").c_str());
 		}
 		// tf1.print();
 	} else {
