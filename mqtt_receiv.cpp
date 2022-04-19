@@ -106,8 +106,11 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 
 	// print log - test
 	mvprintw(10,0,log.c_str());
+	wrefresh(info_win_1);
+	wrefresh(info_win_2);
+	wrefresh(cmd_win);
 	initWindow();
-
+	 
     add_log("\n ===================  Message received  ================================ \n"); 
 
 	mqtt_message = (char*) message->payload;
@@ -133,9 +136,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	
 	// Refresh
 	refresh();
-	wrefresh(info_win_1);
-	wrefresh(info_win_2);
-	wrefresh(cmd_win);
+	
 	
 }  ////////////////////////////         end message received ////////////////////////
 
