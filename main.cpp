@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
 
 	mqtt mqtt_obj(host_addr, port_number);			// start mqtt 
 	char c;
+	int i;
 	string str, ch;
 	while(1)						// keep mqtt send theread running
 	{
@@ -48,7 +49,7 @@ int main(int argc, char *argv[])
 		{
 		case '\n':
 			i=0;
-			if (str.size()) log += "\n" + str;
+			if (str.size()) mqtt_obj.add_log("\n" + str);
 			str.clear();
 			wclear(mqtt_obj.cmd_win);
 			break;

@@ -78,14 +78,14 @@ bool mqtt::send_message(std::string  message)
 
 void mqtt::on_connect(int rc)							// on connect callback
 {
-	add_log("****   MQTT Connected with code= " + to_string(rc) +"  *****");
+	add_log("\n****   MQTT Connected with code= " + to_string(rc) +"  *****");
 	if(rc == 0)
 	{
 					// Only attempt to subscribe on a successful connect. 
 
 		subscribe(NULL, in_topic);
 
-		add_log("****   MQTT subscription to topic = ");
+		add_log("\n****   MQTT subscription to topic = ");
 		add_log(in_topic);
 		add_log("****\n");
 	}
