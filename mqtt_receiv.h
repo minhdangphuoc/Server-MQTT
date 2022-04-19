@@ -10,7 +10,8 @@
 
 class mqtt : public mosqpp::mosquittopp			// mqtt class
 {
-
+	private:
+	std::string log;
 	public:
 		mqtt(const char *host, int port);	 // constructor
 		~mqtt(){};
@@ -21,6 +22,7 @@ class mqtt : public mosqpp::mosquittopp			// mqtt class
 		void on_subscribe(int mid, int qos_count, const int *granted_qos);
 		bool send_message(std::string message);
 		void initWindow();
+		void add_log(std::string);
 };
 
 #endif // MQTT_H

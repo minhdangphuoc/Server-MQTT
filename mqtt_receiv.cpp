@@ -41,7 +41,7 @@ mqtt::mqtt(const char *host, int port)						// costructor
 	
 	int keepalive = 600;
 
-	printf("****   MQTT start connect ****** \n");
+	add_log("****   MQTT start connect ****** \n");
 
 	connect(host, port, (int) keepalive);			// connect to mqtt broker
 	
@@ -65,7 +65,7 @@ bool mqtt::send_message(std::string  message)
  
 	int ret = publish(NULL,out_topic,message.length(),message.c_str(),1,false);
 
-	printf(" Message published \n");
+	add_log(" Message published \n");
 
  	return ( ret == MOSQ_ERR_SUCCESS );
  }
@@ -76,15 +76,15 @@ bool mqtt::send_message(std::string  message)
 void mqtt::on_connect(int rc)							// on connect callback
 {
 	initscr();
-	printf("****   MQTT Connected with code= %d  *****\n", rc);
+	add_log("****   MQTT Connected with code= %d  *****\n", rc);
 	if(rc == 0)
 	{
 					// Only attempt to subscribe on a successful connect. 
 
 		subscribe(NULL, in_topic);
 
-		printf("****   MQTT subscription to topic = ");printf(in_topic);
-		printf("    ****\n");
+		add_log("****   MQTT subscription to topic = ");add_log(in_topic);
+		add_log("    ****\n");
 	}
 }
 
@@ -92,7 +92,7 @@ void mqtt::on_connect(int rc)							// on connect callback
 
 void mqtt::on_subscribe(int mid, int qos_count, const int *granted_qos)		// on subcribe callback
 {
-	printf("****   MQTT Topic subscription succeeded.   ****\n");
+	add_log("****   MQTT Topic subscription succeeded.   ****\n");
 }
 
 
@@ -106,10 +106,10 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 
 	std::string mqtt_message;						// mqtt message string
 
-        printf("\n ===================  Message received  ================================ \n"); 
+    add_log("\n ===================  Message received  ================================ \n"); 
 
 	mqtt_message = (char*) message->payload;
-	printf("Message is = %s\n",mqtt_message.c_str()) ;
+	add_log("Message is = %s\n",mqtt_message.c_str()) ;
 
 	if (reader.parse(mqtt_message, root))   
 	{
@@ -118,7 +118,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 			int analogValue = stoi(root["analog"].asString());
 			std::cout << analogValue << std::endl;
 			tf1.setSignal(1 + (analogValue>300) + (analogValue>600) + (analogValue>1024)); 
-			if(!send_message("{\"TFL\":" + to_string(1 + (analogValue>300) + (analogValue>600) + (analogValue>1024)) + "}")) printf("Message did not send\n") ;
+			if(!send_message("{\"TFL\":" + to_string(1 + (analogValue>300) + (analogValue>600) + (analogValue>1024)) + "}")) add_log("Message did not send\n") ;
 		}
 		if (!root["TFL"].isNull())
 		{
@@ -133,18 +133,25 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	
 }  ////////////////////////////         end message received ////////////////////////
 
+void mqtt::add_log(std::string str)
+{
+	log += "\n" + str;
+}
+
 void mqtt::initWindow()
 {
 // New windows
-wborder(info_win_1, '#', '#', '#', '#', '#', '#', '#', '#');
-wborder(info_win_2, '#', '#', '#', '#', '#', '#', '#', '#');
-wborder(cmd_win, '#', '#', '#', '#', '#', '#', '#', '#');
+	wborder(info_win_1, '#', '#', '#', '#', '#', '#', '#', '#');
+	wborder(info_win_2, '#', '#', '#', '#', '#', '#', '#', '#');
+	wborder(cmd_win, '#', '#', '#', '#', '#', '#', '#', '#');
 
-// Init refresh
-refresh();
-wrefresh(info_win_1);
-wrefresh(info_win_2);
-wrefresh(cmd_win);
+	// Init refresh
+	refresh();
+	wrefresh(info_win_1);
+	wrefresh(info_win_2);
+	wrefresh(cmd_win);
+
+	// 
 }
 
 
