@@ -112,7 +112,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	std::string mqtt_message;						// mqtt message string
 
 	
-    add_log("\n ===================  Message received  ================================ \n"); 
+    add_log("\n Message received: \n"); 
 
 	mqtt_message = (char*) message->payload;
 	add_log("Message is = "+ mqtt_message +"\n") ;
@@ -128,11 +128,11 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 		}
 		if (!root["TFL"].isNull())
 		{
-			int state = stoi(root["TFL"].asString()); 
+			int state = root["TFL"].asInt(); 
 			std::cout << state << std::endl; 
 			tf1.setSignal(state);
-			add_log("Set TFL signal to" + root["TFL"].asString());
-			wprintw(info_win_1, root["TFL"].asString().c_str());
+			add_log("Set TFL signal to" + to_string(root["TFL"].asInt());
+			wprintw(info_win_1, to_string(root["TFL"].asInt()));
 		}
 		// tf1.print();
 	}
