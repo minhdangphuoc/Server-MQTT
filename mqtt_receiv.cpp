@@ -86,7 +86,9 @@ void mqtt::on_connect(int rc)							// on connect callback
 
 		subscribe(NULL, in_topic);
 
-		add_log(myString("****   MQTT subscription to topic = " + in_topic + "****"));
+		add_log("****   MQTT subscription to topic = ") 
+		add_log(in_topic);
+		add_log("****\n");
 	}
 }
 
@@ -145,7 +147,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 
 void mqtt::add_log(std::string str)
 {
-	log += "\n" + str;
+	log += str;
 }
 
 void mqtt::initWindow()
