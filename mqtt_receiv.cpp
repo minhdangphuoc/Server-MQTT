@@ -21,8 +21,6 @@ using namespace std;
 
 #include <jsoncpp/json/json.h>
 
-void mqtt::add_log(std::string);
-void mqtt::initWindow();
 
 traffic_light tf1;
 
@@ -88,7 +86,7 @@ void mqtt::on_connect(int rc)							// on connect callback
 
 		subscribe(NULL, in_topic);
 
-		add_log("****   MQTT subscription to topic = " + in_topic + "****");
+		add_log("****   MQTT subscription to topic = " + to_string(in_topic) + "****");
 	}
 }
 
