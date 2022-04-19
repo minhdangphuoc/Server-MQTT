@@ -54,7 +54,7 @@ mqtt::mqtt(const char *host, int port)						// costructor
 };
 
 /// Send message
-bool mqtt::send_message(std::string  message)
+bool mqtt::send_message(std::string message)
 
  {
  		// Send message - depending on QoS, mosquitto lib managed re-submission this the thread

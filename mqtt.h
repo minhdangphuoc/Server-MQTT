@@ -9,7 +9,7 @@
 
 #define in_topic 	"SlothInput"
 
-#define out_topic 	"SlothTFLState"
+#define out_topic 	"SlothOut"
 
 #define host_addr 	"localhost"
 
