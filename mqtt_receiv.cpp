@@ -126,12 +126,27 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 			tf1.setSignal(1 + (analogValue>300) + (analogValue>600) + (analogValue>1024)); 
 			if(!send_message("{\"TFL\":" + to_string(1 + (analogValue>300) + (analogValue>600) + (analogValue>1024)) + "}")) add_log("Message did not send\n") ;
 		}
+
 		if (root["TFL"].isInt())
 		{
 			int state = root["TFL"].asInt(); 
 			tf1.setSignal(state);
 			// mvprintw(9,0,to_string(state).c_str());
-			mvwprintw(info_win_1, 1, 1, to_string(state).c_str());
+			// mvwprintw(info_win_1, 1, 1, to_string(state).c_str());
+		}
+
+		if (!root["Distance"].isNull())
+		{
+			int dist = root["Distance"].asInt(); 
+			// mvprintw(9,0,to_string(state).c_str());
+			mvwprintw(info_win_1, 1, 1, to_string(dist).c_str());
+		}
+
+		if (!root["Compass"].isNull())
+		{
+			int comp = root["Distance"].asInt(); 
+			// mvprintw(9,0,to_string(state).c_str());
+			mvwprintw(info_win_2, 1, 1, to_string(comp).c_str());
 		}
 		// tf1.print();
 	} else {
@@ -158,8 +173,8 @@ void mqtt::initWindow()
 	wborder(cmd_win, '#', '#', '#', '#', '#', '#', '#', '#');
 
 	// Add Window Title
-	mvwprintw(info_win_1, 0, 1, "Info 1");
-	mvwprintw(info_win_2, 0, 1, "Info 2");
+	mvwprintw(info_win_1, 0, 1, "Distance");
+	mvwprintw(info_win_2, 0, 1, "Compass");
 	mvwprintw(cmd_win, 0, 1, "Command");
 
 	// Refresh
