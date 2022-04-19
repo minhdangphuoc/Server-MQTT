@@ -113,7 +113,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	std::string mqtt_message;						// mqtt message string
 
 	initWindow();
-	
+	mvprintw(10,0,log.c_str());
 	// print log - test
 	
 	
@@ -165,7 +165,7 @@ void mqtt::initWindow()
 	mvwprintw(cmd_win, 0, 1, "Command");
 
 	// Refresh
-	// refresh();
+	refresh();
 	wrefresh(info_win_1);
 	wrefresh(info_win_2);
 	wrefresh(cmd_win);
