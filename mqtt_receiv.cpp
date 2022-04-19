@@ -84,7 +84,7 @@ bool mqtt::send_message(std::string message)
 
 		if (!root["Turn"].isNull())
 		{
-			add_log("Turn - Value: " + root["Turn"].asString(););
+			add_log("Turn - Value: " + root["Turn"].asString());
 		}
 		// tf1.print();
 	} else {
