@@ -31,9 +31,9 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {	
-	printf ("Raspberry Pi MQTT receive demo\n") ;
+	// printf ("Raspberry Pi MQTT receive demo\n") ;
 
-	printf ("****   Subscribed to listen MQTT messages \n");
+	// printf ("****   Subscribed to listen MQTT messages \n");
 
 	mqtt mqtt_obj(host_addr, port_number);			// start mqtt 
 	mqtt_obj.initWindow();
