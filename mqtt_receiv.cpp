@@ -76,6 +76,7 @@ bool mqtt::send_message(std::string  message)
 void mqtt::on_connect(int rc)							// on connect callback
 {
 	initscr();
+	initWindow();
 	printf("****   MQTT Connected with code= %d  *****\n", rc);
 	if(rc == 0)
 	{
@@ -141,10 +142,10 @@ wborder(info_win_2, '#', '#', '#', '#', '#', '#', '#', '#');
 wborder(cmd_win, '#', '#', '#', '#', '#', '#', '#', '#');
 
 // Init refresh
-// refresh();
-// wrefresh(info_win_1);
-// wrefresh(info_win_2);
-// wrefresh(cmd_win);
+refresh();
+wrefresh(info_win_1);
+wrefresh(info_win_2);
+wrefresh(cmd_win);
 }
 
 
