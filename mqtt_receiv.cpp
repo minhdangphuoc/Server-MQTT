@@ -12,7 +12,7 @@
 #include <ncurses.h>
 
 
-#include "mqtt.h"
+
 #include "traffic_light.h"
 #include "mqtt_receiv.h"
 
@@ -21,23 +21,6 @@ using namespace std;
 #include <jsoncpp/json/json.h>
 
 traffic_light tf1;
-
-initscr();
-
-// New windows
-WINDOW *info_win_1 = newwin(3, 20, 1, 1); 
-wborder(info_win_1, '#', '#', '#', '#', '#', '#', '#', '#');
-
-WINDOW *info_win_2 = newwin(3, 20, 1, 25); 
-wborder(info_win_2, '#', '#', '#', '#', '#', '#', '#', '#');
-
-WINDOW *cmd_win = newwin(3, 20, 5,15);
-
-// Init refresh
-refresh();
-wrefresh(info_win_1);
-wrefresh(info_win_2);
-wrefresh(cmd_win);
 
 
 
