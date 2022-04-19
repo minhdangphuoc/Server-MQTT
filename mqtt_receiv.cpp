@@ -75,7 +75,10 @@ bool mqtt::send_message(std::string  message)
 
 void mqtt::on_connect(int rc)							// on connect callback
 {
+	// Ncurse Init
 	initscr();
+	initWindow();
+	
 	add_log("****   MQTT Connected with code= " + to_string(rc) +"  *****\n");
 	if(rc == 0)
 	{
@@ -132,7 +135,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	}
 	// print log - test
 	mvprintw(10,0,log.c_str());
-	// Init refresh
+	// Refresh
 	refresh();
 	wrefresh(info_win_1);
 	wrefresh(info_win_2);
@@ -153,6 +156,17 @@ void mqtt::initWindow()
 	wborder(info_win_1, '#', '#', '#', '#', '#', '#', '#', '#');
 	wborder(info_win_2, '#', '#', '#', '#', '#', '#', '#', '#');
 	wborder(cmd_win, '#', '#', '#', '#', '#', '#', '#', '#');
+
+// Add Window Title
+	mvwprintw(info_win_1, 0, 1, "Info 1");
+	mvwprintw(info_win_2, 0, 1, "Info 2");
+	mvwprintw(cmd_win, 0, 1, "Command");
+
+// Refresh
+	refresh();
+	wrefresh(info_win_1);
+	wrefresh(info_win_2);
+	wrefresh(cmd_win);
 }
 
 
