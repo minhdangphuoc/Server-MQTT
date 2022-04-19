@@ -50,10 +50,10 @@ int main(int argc, char *argv[])
 			i=0;
 			if (str.size()) log += "\n" + str;
 			str.clear();
-			wclear(mqtt_obj->cmd_win);
+			wclear(mqtt_obj.cmd_win);
 			break;
 		case 127:
-			mvwprintw(mqtt_obj->cmd_win,1, i," ");
+			mvwprintw(mqtt_obj.cmd_win,1, i," ");
 			if(i>0)
 			{
 				i--;
@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 				ch = c;
 				str += ch; 
 			}
-			mvwprintw(mqtt_obj->cmd_win,1, i,ch.c_str());
+			mvwprintw(mqtt_obj.cmd_win,1, i,ch.c_str());
 			break;
 		}
 	}							
