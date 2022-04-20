@@ -130,10 +130,10 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 	std::string mqtt_message;						// mqtt message string
 
 	
-    add_log("\nMessage received: \n"); 
+    // add_log("\nMessage received: \n"); 
 
 	mqtt_message = (char*) message->payload;
-	add_log("Message is = "+ mqtt_message +"\n") ;
+	// add_log("Message is = "+ mqtt_message +"\n") ;
 	
 	if (reader.parse(mqtt_message, root) == true)   
 	{
