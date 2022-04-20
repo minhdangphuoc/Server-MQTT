@@ -91,6 +91,8 @@ bool mqtt::send_message(std::string message)
 		add_log("\n Cannot parse JSON or unvalid command \n"); 
 	}
 
+	initWindow();
+
  	return ( ret == MOSQ_ERR_SUCCESS );
  }
 
