@@ -157,6 +157,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 		{
 			int dist = root["Distance"].asInt(); 
 			// mvprintw(9,0,to_string(state).c_str());
+			wclear(info_win_2);
 			mvwprintw(info_win_1, 1, 1, (to_string(dist) + " cm").c_str());
 		}
 
@@ -164,11 +165,12 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 		{
 			int comp = root["Compass"].asInt(); 
 			// mvprintw(9,0,to_string(state).c_str());
+			wclear(info_win_2);
 			mvwprintw(info_win_2, 1, 1, (to_string(comp) + " deg").c_str());
 		}
 		// tf1.print();
 	} else {
-		add_log("\n Cannot parse JSON \n"); 
+		// add_log("\n Cannot parse JSON \n"); 
 	}
 	
 	initWindow();
