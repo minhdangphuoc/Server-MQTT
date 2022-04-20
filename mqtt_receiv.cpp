@@ -157,7 +157,7 @@ void mqtt::on_message(const struct mosquitto_message *message)			// on message c
 		{
 			int dist = root["Distance"].asInt(); 
 			// mvprintw(9,0,to_string(state).c_str());
-			wclear(info_win_2);
+			wclear(info_win_1);
 			mvwprintw(info_win_1, 1, 1, (to_string(dist) + " cm").c_str());
 		}
 
